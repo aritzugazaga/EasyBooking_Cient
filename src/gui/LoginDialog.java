@@ -1,4 +1,4 @@
-package client;
+package gui;
 
 import java.awt.EventQueue;
 
@@ -8,6 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import controller.LoginController;
+
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
@@ -19,7 +22,7 @@ public class LoginDialog {
 	private JFrame frmEasyBooking;
 	private JTextField email;
 	private JPasswordField contraseña;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -69,6 +72,7 @@ public class LoginDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					LoginController.getInstance().login(email.toString(), contraseña.toString());
+					new BookingWindow();
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}
@@ -84,6 +88,7 @@ public class LoginDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					LoginController.getInstance().register(email.toString(), contraseña.toString());
+					new BookingWindow();
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}

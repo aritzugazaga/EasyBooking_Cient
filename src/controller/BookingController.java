@@ -1,15 +1,19 @@
-package client;
+package controller;
 
 import java.rmi.RemoteException;
 
 import DTO.VueloDTO;
+import remote.ServiceLocator;
 
 public class BookingController {
 	
 	public static BookingController instance;
 	
-	public boolean buscarVuelos(String aeropuertoOrigen, String aeropuertoDestino, String fechaSalida) throws RemoteException {
-		return ServiceLocator.getInstance().getService().buscarVuelos(aeropuertoOrigen, aeropuertoDestino, fechaSalida);
+	public BookingController() {
+	}
+	
+	public List<VueloDTO> buscarVuelos(String aeropuertoOrigen, String aeropuertoDestino) throws RemoteException {
+		return ServiceLocator.getInstance().getService().buscarVuelos(aeropuertoOrigen, aeropuertoDestino);
 	}
 	
 	public boolean hacerReserva(VueloDTO vuelo, String email, boolean paymentmethod) throws RemoteException{

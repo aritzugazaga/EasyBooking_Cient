@@ -1,4 +1,4 @@
-package client;
+package gui;
 
 import java.awt.EventQueue;
 
@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 
-import domainObjects.Aeropuerto;
+import DTO.AeropuertoDTO;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -56,7 +56,7 @@ public class BookingWindow {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JComboBox<Aeropuerto> comboBox = new JComboBox<Aeropuerto>();
+		JComboBox<AeropuertoDTO> comboBox = new JComboBox<AeropuertoDTO>();
 		comboBox.setBounds(10, 68, 102, 20);
 		panel.add(comboBox);
 		
@@ -75,7 +75,7 @@ public class BookingWindow {
 		lblNewLabel_1_1.setBounds(10, 99, 115, 14);
 		panel.add(lblNewLabel_1_1);
 		
-		JComboBox<Aeropuerto> comboBox_1 = new JComboBox<Aeropuerto>();
+		JComboBox<AeropuertoDTO> comboBox_1 = new JComboBox<AeropuertoDTO>();
 		comboBox_1.setBounds(10, 124, 102, 20);
 		panel.add(comboBox_1);
 		

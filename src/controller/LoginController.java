@@ -1,10 +1,15 @@
-package client;
+package controller;
 
 import java.rmi.RemoteException;
+
+import remote.ServiceLocator;
 
 public class LoginController {
 	
 	public static LoginController instance;
+
+	public LoginController() {
+	}
 	
 	public boolean login(String email, String password) throws RemoteException {
 		return ServiceLocator.getInstance().getService().login(email, password);
