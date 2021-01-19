@@ -11,6 +11,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 
 import DTO.AeropuertoDTO;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -92,7 +94,9 @@ public class BookingWindow {
 		panel_1.setBounds(135, 0, 299, 261);
 		frame.getContentPane().add(panel_1);
 		
-		JList list = new JList();
+		DefaultListModel<String> listmodel = new DefaultListModel<String>();
+		listmodel.addElement("hola");
+		JList<String> list = new JList<String>(listmodel);
 		panel_1.add(list);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
