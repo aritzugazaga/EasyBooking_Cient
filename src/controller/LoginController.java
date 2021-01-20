@@ -11,12 +11,20 @@ public class LoginController {
 	public LoginController() {
 	}
 	
-	public boolean login(String email, String password) throws RemoteException {
-		return ServiceLocator.getInstance().getService().login(email, password);
+	public void login(String email, String password){
+		try {
+			ServiceLocator.getInstance().getService().login(email, password);
+		} catch (RemoteException e) {
+			System.err.println(e);
+		}	
 	}
 	
-	public boolean register(String email, String password) throws RemoteException {
-		return ServiceLocator.getInstance().getService().registrarUsuario(email, password);
+	public void register(String email, String password) throws RemoteException {
+		try {
+			ServiceLocator.getInstance().getService().registrarUsuario(email, password);
+		} catch (RemoteException e) {
+			System.err.println(e);
+		}	
 	}
 	
 	public static LoginController getInstance() {

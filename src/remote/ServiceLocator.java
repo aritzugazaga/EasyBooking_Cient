@@ -11,10 +11,6 @@ public class ServiceLocator {
 	private static ServiceLocator instance;
 
 	public void setService(String ip, String port, String serverName) {
-		if (System.getSecurityManager() == null) {
-			System.setSecurityManager(new SecurityManager());
-		}
-		
 		try {		
 			String URL = "//" + ip + ":" + port + "/" + serverName;
 			this.service = (IRemoteFacade) Naming.lookup(URL);

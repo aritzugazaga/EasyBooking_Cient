@@ -16,39 +16,21 @@ import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JPasswordField;
+import javax.swing.JPanel;
 
 public class LoginDialog {
+	
+	private static final long serialVersionUID = 1L;
 
 	private JFrame frmEasyBooking;
 	private JTextField email;
 	private JPasswordField contraseña;
+	private LoginController lg;
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LoginDialog window = new LoginDialog();
-					window.frmEasyBooking.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
 	public LoginDialog() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frmEasyBooking = new JFrame();
 		frmEasyBooking.getContentPane().setBackground(Color.WHITE);
@@ -106,5 +88,9 @@ public class LoginDialog {
 		contraseña = new JPasswordField();
 		contraseña.setBounds(116, 127, 189, 20);
 		frmEasyBooking.getContentPane().add(contraseña);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 10, 10);
+		frmEasyBooking.getContentPane().add(panel);
 	}
 }
