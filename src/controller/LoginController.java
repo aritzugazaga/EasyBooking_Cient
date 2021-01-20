@@ -2,6 +2,7 @@ package controller;
 
 import java.rmi.RemoteException;
 
+
 import remote.ServiceLocator;
 
 public class LoginController {
@@ -19,7 +20,7 @@ public class LoginController {
 		}	
 	}
 	
-	public void register(String email, String password) throws RemoteException {
+	public void register(String email, String password) {
 		try {
 			ServiceLocator.getInstance().getService().registrarUsuario(email, password);
 		} catch (RemoteException e) {

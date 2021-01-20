@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -12,18 +10,19 @@ import javax.swing.SwingConstants;
 import controller.LoginController;
 
 import java.awt.event.ActionListener;
-import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 
 public class LoginDialog {
 	
+	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 1L;
 
 	private JFrame frmEasyBooking;
 	private JTextField email;
 	private JPasswordField contraseña;
+	@SuppressWarnings("unused")
 	private LoginController lg;
 	
 	public LoginDialog(LoginController loginController) {
@@ -61,12 +60,8 @@ public class LoginDialog {
 		btnRegistrarse.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					LoginController.getInstance().register(email.toString(), contraseña.toString());
-					new BookingWindow();
-				} catch (RemoteException e) {
-					e.printStackTrace();
-				}
+				LoginController.getInstance().register(email.toString(), contraseña.toString());
+				new BookingWindow();
 			}
 		});
 		btnRegistrarse.setBounds(96, 180, 110, 25);
