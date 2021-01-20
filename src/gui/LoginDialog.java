@@ -88,9 +88,5 @@ public class LoginDialog {
 		contraseña = new JPasswordField();
 		contraseña.setBounds(116, 127, 189, 20);
 		frmEasyBooking.getContentPane().add(contraseña);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 10, 10);
-		frmEasyBooking.getContentPane().add(panel);
 	}
 }

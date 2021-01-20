@@ -95,7 +95,6 @@ public class BookingWindow {
 		frame.getContentPane().add(panel_1);
 		
 		DefaultListModel<String> listmodel = new DefaultListModel<String>();
-		listmodel.addElement("hola");
 		JList<String> list = new JList<String>(listmodel);
 		panel_1.add(list);
 		frame.setBounds(100, 100, 450, 300);
