@@ -16,7 +16,6 @@ import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JPasswordField;
-import javax.swing.JPanel;
 
 public class LoginDialog {
 	
@@ -27,11 +26,9 @@ public class LoginDialog {
 	private JPasswordField contraseña;
 	private LoginController lg;
 	
-	public LoginDialog() {
-		initialize();
-	}
-
-	private void initialize() {
+	public LoginDialog(LoginController loginController) {
+		this.lg = loginController;
+		
 		frmEasyBooking = new JFrame();
 		frmEasyBooking.getContentPane().setBackground(Color.WHITE);
 		frmEasyBooking.getContentPane().setForeground(new Color(255, 255, 255));
@@ -52,12 +49,8 @@ public class LoginDialog {
 		btnIniciarSesion.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnIniciarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					LoginController.getInstance().login(email.toString(), contraseña.toString());
-					new BookingWindow();
-				} catch (RemoteException e) {
-					e.printStackTrace();
-				}
+				LoginController.getInstance().login(email.toString(), contraseña.toString());
+				new BookingWindow();
 			}
 		});
 		btnIniciarSesion.setBounds(226, 180, 110, 25);
@@ -89,4 +82,5 @@ public class LoginDialog {
 		contraseña.setBounds(116, 127, 189, 20);
 		frmEasyBooking.getContentPane().add(contraseña);
 	}
+
 }

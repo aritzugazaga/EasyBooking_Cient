@@ -1,6 +1,7 @@
 package controller;
 
 import java.rmi.RemoteException;
+import java.util.List;
 
 import DTO.VueloDTO;
 import remote.ServiceLocator;
@@ -13,7 +14,7 @@ public class BookingController {
 	}
 	
 	public List<VueloDTO> buscarVuelos(String aeropuertoOrigen, String aeropuertoDestino) throws RemoteException {
-		return ServiceLocator.getInstance().getService().buscarVuelos(aeropuertoOrigen, aeropuertoDestino);
+		return ServiceLocator.getInstance().getService().getVuelos(aeropuertoOrigen, aeropuertoDestino);
 	}
 	
 	public boolean hacerReserva(VueloDTO vuelo, String email, boolean paymentmethod) throws RemoteException{

@@ -11,6 +11,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 
 import DTO.AeropuertoDTO;
+import dataBase.DB;
+import domainObjects.Aeropuerto;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -49,6 +51,7 @@ public class BookingWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.getContentPane().setLayout(null);
@@ -58,9 +61,10 @@ public class BookingWindow {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JComboBox<AeropuertoDTO> comboBox = new JComboBox<AeropuertoDTO>();
+		JComboBox<Aeropuerto> comboBox = new JComboBox<Aeropuerto>();
 		comboBox.setBounds(10, 68, 102, 20);
 		panel.add(comboBox);
+		for (int i)
 		
 		JLabel lblNewLabel = new JLabel("Buscar Vuelo");
 		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 14));
