@@ -61,7 +61,6 @@ public class LoginDialog {
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				LoginController.getInstance().register(email.toString(), contraseña.toString());
-				new BookingWindow();
 			}
 		});
 		btnRegistrarse.setBounds(96, 180, 110, 25);

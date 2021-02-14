@@ -10,11 +10,12 @@ import java.awt.Font;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.rmi.RemoteException;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.JTextField;
 
+import DTO.VueloDTO;
 import controller.BookingController;
 
 public class BookingWindow {
@@ -22,33 +23,14 @@ public class BookingWindow {
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
+	private DefaultListModel<String> listmodel;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BookingWindow window = new BookingWindow();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the application.
-	 */
 	public BookingWindow() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	@SuppressWarnings("unused")
 	private void initialize() {
 		
 		frame = new JFrame();
@@ -59,6 +41,11 @@ public class BookingWindow {
 		panel.setBounds(0, 0, 135, 261);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
+		panel_1.setBounds(135, 0, 299, 261);
+		frame.getContentPane().add(panel_1);
 		
 		JLabel lblNewLabel = new JLabel("Buscar Vuelo");
 		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 14));
@@ -87,30 +74,24 @@ public class BookingWindow {
 		textField_1.setColumns(10);
 		String aeropuertoDestino = textField_1.getText();
 		
-		JButton btnNewButton = new JButton("Buscar");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				try {
-					BookingController.getInstance().buscarVuelos(aeropuertoOrigen, aeropuertoDestino);
-				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		});
-		btnNewButton.setBounds(27, 171, 65, 23);
-		panel.add(btnNewButton);
-		
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(135, 0, 299, 261);
-		frame.getContentPane().add(panel_1);
-		
-		DefaultListModel<String> listmodel = new DefaultListModel<String>();
+		listmodel = new DefaultListModel<String>();
 		JList<String> list = new JList<String>(listmodel);
 		panel_1.add(list);
 		listmodel = (DefaultListModel<String>) list.getModel();
+		
+		JButton btnNewButton = new JButton("Buscar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String aeropuertoOrigen = textField.getText();
+				String aeropuertoDestino = textField_1.getText();
+				List<VueloDTO> listaVuelo = BookingController.getInstance().buscarVuelos(aeropuertoOrigen, aeropuertoDestino);
+				for(VueloDTO l : listaVuelo) 
+					listmodel.addElement(l.toString());
+			}
+		});
+		btnNewButton.setBounds(10, 171, 102, 23);
+		panel.add(btnNewButton);
+		
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
